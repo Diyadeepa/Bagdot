@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="CodePixar">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="user/img/fav.png">
+    <!-- Title -->
+    <title>Karma Shop</title>
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="user/css/linearicons.css">
+    <link rel="stylesheet" href="user/css/owl.carousel.css">
+    <link rel="stylesheet" href="user/css/font-awesome.min.css">
+    <link rel="stylesheet" href="user/css/themify-icons.css">
+    <link rel="stylesheet" href="user/css/nice-select.css">
+    <link rel="stylesheet" href="user/css/nouislider.min.css">
+    <link rel="stylesheet" href="user/css/bootstrap.css">
+    <link rel="stylesheet" href="user/css/main.css">
+
+    <style>
+        .container {
+            margin-bottom: 5%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        .cart-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 14px 16px rgba(232, 225, 225, 0.1);
+            /* width: 400px; */
+            /* background-color: #c7c7c7;; */
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .card-body {
+            background-color: #ffffff;
+            /* Set the background color */
+            border-radius: 10px;
+            border: 2px solid;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add the box shadow */
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            color: address, daily body, black wall, shadow, danger, Nakoda#007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-label span {
+            color: red;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            color: black;
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .text-danger {
+            font-size: 14px;
+            font-style: italic;
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0f8415;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header Area -->
+
+    <header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="/"><img src="/user/img/logo.jpg" alt=""
+							style="height: 60px;width: 200px;background-color: black;"></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+							<li class="nav-item submenu dropdown">
+								<li class="nav-item"><a class="nav-link" href="/category/?id=all">Shop Category</a></li>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+								</ul>
+							</li>
+							<!-- <li class="nav-item"><a class="nav-link" href="/login">Login</a></li> -->
+							<% if (login) { %>
+								<li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+								<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
+
+								<% } else {%>
+									<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+							<% } %>
+						</ul>
+						
+		</div>
+	</header>
+
+    <!-- Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>My Account</h1>
+                    <!-- Breadcrumb Navigation -->
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.html">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!-- Cart Area -->
+    <div class="container">
+        <div class="cart-container">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="card-title">Add Your Address</h3>
+
+                    <form action="/addaddressPost" id="addressForm" method="POST" onsubmit="return validateAddress()">
+
+
+                        <div class="form-group">
+                            <label for="fullname" class="form-label">Full Name <span>*</span></label>
+                            <input type="text" id="fullname" name="name" class="form-control">
+                            <span id="fullnameError" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email </label>
+                                <input type="email" id="email" name="email" class="form-control">
+                                <span id="emailError" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="adname" class="form-label">House Name / Flat No <span>*</span></label>
+                                <input type="text" id="adname" name="housename" class="form-control">
+                                <span id="adnameError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="street" class="form-label">Street <span>*</span></label>
+                                <input type="text" id="street" name="street" class="form-control">
+                                <span id="streetError" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="pincode" class="form-label">Pincode <span>*</span></label>
+                                <input type="number" id="pincode" name="pincode" class="form-control">
+                                <span id="pincodeError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="city" class="form-label">City <span>*</span></label>
+                                <input type="text" id="city" name="city" class="form-control">
+                                <span id="cityError" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="state" class="form-label">State <span>*</span></label>
+                                <select id="state" name="state" class="form-control" required>
+                                    <option value="" disabled selected>Select a state</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="TamilNadu">Tamil Nadu</option>
+                                </select>
+                                <span id="stateError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="country" class="form-label">Country <span>*</span></label>
+                                <select id="country" name="country" class="form-control" required>
+                                    <option value="India">India</option>
+                                </select>
+                                <span id="countryError" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="mobile" class="form-label">Phone Number <span>*</span></label>
+                                <input type="number" id="mobile" name="mobile" class="form-control">
+                                <span id="mobileError" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="saveas" class="form-label">Save as <span>*</span></label>
+                            <select id="saveas" name="saveas" class="form-control" required>
+                                <option value="" disabled selected>Choose One</option>
+                                <option value="Home">Home</option>
+                                <option value="WorkSpace">Work Space</option>
+                                <option value="WorkSpace">Other</option>
+                            </select>
+                            <span id="saveasError" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <button id="saveChangesButton" class="btn btn-primary" type="submit">Add Address</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- End Cart Area -->
+
+    <!-- Footer Area -->
+    <footer class="footer-area section_gap">
+        <div class="container">
+            <!-- Footer Content -->
+            <div class="row">
+                <!-- About Us Section -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>About Us</h6>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+                <!-- Newsletter Section -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Newsletter</h6>
+                        <p>Stay update with our latest</p>
+                        <div class="" id="mc_embed_signup">
+                            <!-- Newsletter Form -->
+                            <form target="_blank" novalidate="true"
+                                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                method="get" class="form-inline">
+                                <div class="d-flex flex-row">
+                                    <input class="form-control" name="EMAIL" placeholder="Enter Email"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                        required="" type="email">
+                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
+                                            aria-hidden="true"></i></button>
+                                    <div style="position: absolute; left: -5000px;">
+                                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                            type="text">
+                                    </div>
+                                </div>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Instagram Feed Section -->
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">Instragram Feed</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <!-- Instagram Images -->
+                            <li><img src="user/img/i1.jpg" alt=""></li>
+                            <li><img src="user/img/i2.jpg" alt=""></li>
+                            <li><img src="user/img/i3.jpg" alt=""></li>
+                            <li><img src="user/img/i4.jpg" alt=""></li>
+                            <li><img src="user/img/i5.jpg" alt=""></li>
+                            <li><img src="user/img/i6.jpg" alt=""></li>
+                            <li><img src="user/img/i7.jpg" alt=""></li>
+                            <li><img src="user/img/i8.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Follow Us Section -->
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Follow Us</h6>
+                        <p>Let us be social</p>
+                        <!-- Social Media Icons -->
+                        <div class="footer-social d-flex align-items-center">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Footer Section -->
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <!-- Footer Text -->
+                <p class="footer-text m-0">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is
+                    made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                        target="_blank">Colorlib</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Area -->
+
+    <!-- JavaScript -->
+
+    <script>
+        // JavaScript validation function here
+        function validateAddress() {
+            var errors = '';
+            var saveas = document.getElementById('saveas').value;
+            var fullname = document.getElementById('fullname').value;
+            var email = document.getElementById('email').value;
+            var adname = document.getElementById('adname').value;
+            var street = document.getElementById('street').value;
+            var pincode = document.getElementById('pincode').value;
+            var city = document.getElementById('city').value;
+            var state = document.getElementById('state').value;
+            var country = document.getElementById('country').value;
+            var mobile = document.getElementById('mobile').value;
+
+            var saveasError = document.getElementById('saveasError');
+            var fullnameError = document.getElementById('fullnameError');
+            var emailError = document.getElementById('emailError');
+            var adnameError = document.getElementById('adnameError');
+            var streetError = document.getElementById('streetError');
+            var pincodeError = document.getElementById('pincodeError');
+            var cityError = document.getElementById('cityError');
+            var stateError = document.getElementById('stateError');
+            var countryError = document.getElementById('countryError');
+            var mobileError = document.getElementById('mobileError');
+
+            saveasError.innerHTML = '';
+            fullnameError.innerHTML = '';
+            emailError.innerHTML = '';
+            adnameError.innerHTML = '';
+            streetError.innerHTML = '';
+            pincodeError.innerHTML = '';
+            cityError.innerHTML = '';
+            stateError.innerHTML = '';
+            countryError.innerHTML = '';
+            mobileError.innerHTML = '';
+
+            var spacesRegex = /^\s*$/; // Regex to check for only spaces
+
+            if (spacesRegex.test(saveas)) {
+                saveasError.innerHTML = 'Save as is required.';
+                errors += 'Save as is required.\n';
+            }
+
+            if (!/^[a-zA-Z\s]+$/.test(fullname)) {
+                fullnameError.innerHTML = 'Full name can only contain letters and spaces.';
+                errors += 'Full name can only contain letters and spaces.\n';
+            }
+
+            if (spacesRegex.test(fullname.match(/^[a-zA-Z\s]+$/))) {
+                fullnameError.innerHTML = 'Full name is required.';
+                errors += 'Full name is required.\n';
+            }
+            if (spacesRegex.test(email)) {
+                // emailError.innerHTML = 'Email is required.';
+                // errors += 'Email is required.\n';
+            } else if (!email.match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
+                emailError.innerHTML = 'Invalid email address.';
+                errors += 'Invalid email address.\n';
+            }
+            if (!/^[a-zA-Z\s]+$/.test(adname)) {
+                fullnameError.innerHTML = ' only contain letters ';
+                errors += 'Full name can only contain letters and spaces.\n';
+            }
+            if (!/^[a-zA-Z\s]+$/.test(street)) {
+                fullnameError.innerHTML = 'Full name can only contain letters and spaces.';
+                errors += 'Full name can only contain letters and spaces.\n';
+            }
+            if (spacesRegex.test(pincode)) {
+                pincodeError.innerHTML = 'Pincode is required.';
+                errors += 'Pincode is required.\n';
+            } else if (!pincode.match(/^\d{6}$/)) {
+                pincodeError.innerHTML = 'Invalid pincode.';
+                errors += 'Invalid pincode.\n';
+            }
+            if (!/^[a-zA-Z\s]+$/.test(city)) {
+                fullnameError.innerHTML = 'Full name can only contain letters and spaces.';
+                errors += 'Full name can only contain letters and spaces.\n';
+            }
+            if (!/^[a-zA-Z\s]+$/.test(state)) {
+                fullnameError.innerHTML = 'Full name can only contain letters and spaces.';
+                errors += 'Full name can only contain letters and spaces.\n';
+            }
+            if (!/^[a-zA-Z\s]+$/.test(country)) {
+                fullnameError.innerHTML = 'Full name can only contain letters and spaces.';
+                errors += 'Full name can only contain letters and spaces.\n';
+            }
+            if (spacesRegex.test(mobile)) {
+                mobileError.innerHTML = 'Mobile number is required.';
+                errors += 'Mobile number is required.\n';
+            } else if (!mobile.match(/^\d{10}$/)) {
+                mobileError.innerHTML = 'Invalid mobile number.';
+                errors += 'Invalid mobile number.\n';
+            }
+
+            if (errors) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        document.getElementById('saveChangesButton').addEventListener('click', function (event) {
+            if (!validateAddress()) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+
+
+
+
+    <script src="user/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="user/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="user/js/vendor/bootstrap.min.js"></script>
+    <script src="user/js/jquery.ajaxchimp.min.js"></script>
+    <script src="user/js/jquery.nice-select.min.js"></script>
+    <script src="user/js/jquery.sticky.js"></script>
+    <script src="user/js/nouislider.min.js"></script>
