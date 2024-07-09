@@ -402,10 +402,6 @@ const salesReport = async (req, res) => {
 
 
 
-
-
-
-
 const getSalesData = async (req, res) => {
     try {
         console.log("getSalesData");
@@ -421,7 +417,6 @@ const getSalesData = async (req, res) => {
         } else {
             throw new Error("Invalid filter parameter");
         }
-
         res.json(salesData);
     } catch (error) {
         console.log("Error while getSalesData in adminController", error);
@@ -513,8 +508,6 @@ async function getYearlySalesData() {
     const count = getYearlySalesData.map((item) => item.count);
     return { saleDate, count };
 }
-
-
 
 
 module.exports = {

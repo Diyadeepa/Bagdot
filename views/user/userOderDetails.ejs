@@ -213,30 +213,35 @@
                                                         <%= data.products[i].Price %>
                                                     </td>
                                                     <td style="text-align: center;">
+                                                        
                                                         <%= data.products[i].Quantity * data.products[i].Price %>
                                                     </td>
 
                                                     <td style="text-align: center;">
-                                                        <% if (data.products[i].userId==="Cancelled" ) { %>
-                                                            <p style="color: red;">
-                                                                <%= data.products[i].userId %>
+                                                        <% if(data.status === "Payment Pending") { %>
+                                                            <p style="color: yellow;">
+                                                                <%= data.status %>
                                                             </p>
-                                                            
+                                                        <% } else  { %>
+                                                            <%if (data.products[i].userId === "Cancelled" ) { %>
+                                                                <p style="color: red;">
+                                                                    <%= data.products[i].userId %>
+                                                                </p>
                                                             <% } else { %>
                                                                 <%= data.products[i].userId %>
-                                                                    <br>
-                                                                    <br>
-                                                                    <% if (data.products[i].userId !=="Delivered"&&data.products[i].userId !=="Returned") { %>
-                                                                        <button class="btn btn-danger"
-                                                                            onclick="cancelOrder('<%= data.products[i].proId %>', '<%= data.orderID %>')">Cancel</button>
-                                                                        <% } %>
-                                                                            <% } %>
-                                                                                <br>
-                                                                                <% if
-                                                                                    (data.products[i].userId==="Delivered" ) { %>
-                                                                                    <button class="btn btn-danger"
-                                                                                        onclick="returnOrder('<%= data.products[i].proId %>', '<%= data.orderID %>')">Return Order</button>
-                                                                                    <% } %>
+                                                                <br>
+                                                                <br>
+                                                                <% if (data.products[i].userId !== "Delivered" && data.products[i].userId !== "Returned") { %>
+                                                                    <button class="btn btn-danger"
+                                                                        onclick="cancelOrder('<%= data.products[i].proId %>', '<%= data.orderID %>')">Cancel</button>
+                                                                <% } %>
+                                                            <% } %>
+                                                            <br>
+                                                            <% if (data.products[i].userId === "Delivered" ) { %>
+                                                                <button class="btn btn-danger"
+                                                                    onclick="returnOrder('<%= data.products[i].proId %>', '<%= data.orderID %>')">Return Order</button>
+                                                            <% } %>
+                                                        <% } %>
                                                     </td>
 
 

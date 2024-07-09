@@ -343,6 +343,7 @@
                                                         <p style="color: red;">Cancelled</p>
                                                     
                                                     <% } else if (data.products[i].userId == 'Shipped') { %>
+                                                        <p style="color: yellow;">Shipped</p>
                                                         <form action="/admin/updateStatus?id=<%= data._id  %>&proId=<%= data.products[i].proId  %>" method="POST">
                                                             <select name="orderStatus" id="orderStatus">
                                                                 <option value="Shipped">Shipped</option>
@@ -353,6 +354,7 @@
                                                         </form>
                                                         
                                                         <% } else if (data.products[i].userId == 'Out for delivery') { %>
+                                                            <p style="color: yellow;">Out for delivery</p>
                                                             <form action="/admin/updateStatus?id=<%= data._id  %>&proId=<%= data.products[i].proId  %>" method="POST">
                                                                 <select name="orderStatus" id="orderStatus">
                                                                     <option value="Out for delivery">Out for delivery</option>
@@ -365,7 +367,7 @@
 
                                                                 <!-- <form action="/admin/updateStatus?id=<%#= data._id  %>&proId=<%#= data.products[i].proId  %>" method="POST"> -->
                                                                     <!-- <select name="orderStatus" id="orderStatus"> -->
-                                                                        <p>Payment Pending</p>
+                                                                      <p style="color: yellow;">Payment Pending</p>
 <!--                                                                         
                                                                     </select>
                                                                     <button type="submit" class="btn btn-outline-secondary">Submit</button>
@@ -373,12 +375,20 @@
                                                                 
                                                              
 
-                                                            <% } else { %>
-                                                             <p style="color: green;">Delivered</p>
+                                                            <% } else  if (data.products[i].userId == 'Pending'){ %>
+                                                             <p style="color: yellow;">Pending</p>
+                                                             <form action="/admin/updateStatus?id=<%= data._id  %>&proId=<%= data.products[i].proId  %>" method="POST">
+                                                                <select name="orderStatus" id="orderStatus">
+                                                                    <option value="Shipped">Shipped</option>
+                                                                    <option value="Out for delivery">Out for delivery</option>
+                                                                    <option value="Delivered">Delivered</option>
+                                                                </select>
+                                                                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+                                                            </form>
                                                             
+                                                        <% }else if (data.products[i].userId == 'Delivered'){ %>
+                                                            <p style="color:green;">Delivered</p>
                                                         <% } %>
-                                                     
-                                                    
                                                 </td>
                                             </tr>
 

@@ -339,6 +339,8 @@ const cancelOder = async (req, res) => {
 
 const onlinePayemnt = async (req, res) => {
     try {
+        req.session.address=req.body.addressPos;
+        console.log("first online address ",req.body.addressPos);
         console.log('diiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii')
         const totalValue = await cartModel.aggregate([
             {
@@ -428,7 +430,7 @@ const retryOrder = async (req, res) => {
 
         console.log("Order found:", order);
 
-        const amount = order.totalOrderValue * 100; // Convert to paise
+        const amount = (order.totalOrderValue+50) * 100; // Convert to paise
 
         const options = {
             amount: amount,
@@ -478,6 +480,10 @@ const retryPlaceOrder = async (req, res) => {
             },
             { new: true }
         );
+        updatedOrder.status="Pending";
+        updatedOrder.save();
+        
+
 
         if (updatedOrder) {
             res.json({ success: true, id: updatedOrder.orderID });
@@ -743,9 +749,17 @@ const paymentFailed = async (req, res) => {
         const userData = await userModel.findOne({ _id: req.session.userId });
         const cartData = await cartModel.find({ userId: req.session.userId });
         const productData = await productModel.find({ proId: req.query.proId });
+        for (let i = 0; i < cartData.length; i++) {
+            console.log(i, 'for loop', cartData[i])
+            cartData[i].userId = 'Pending';
+            const productInfo = await productModel.updateOne({ _id: cartData[i].proId }, { $inc: { stock: -cartData[i].Quantity } })
+            console.log(productInfo)
 
 
-        console.log(addressData.address[req.body.addressPos])
+        }
+
+
+     
  
 
         const totalValue = await cartModel.aggregate([
@@ -785,8 +799,7 @@ const paymentFailed = async (req, res) => {
             digits: true
         });
 
-        console.log("ibide kerunnund",orderId);
-console.log("addresssssss",addressData);
+    
         
   
         
@@ -796,7 +809,7 @@ console.log("addresssssss",addressData);
             products: cartData,
             totalOrderValue: totalAmount,
             discount: req.session.amount || 0,
-            address: addressData,
+            address:addressData.address[req.session.address],
             paymentMethod:"online",
             date: new Date(),
             status: "Payment Pending",
