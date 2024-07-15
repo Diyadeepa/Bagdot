@@ -214,12 +214,12 @@
                                                     </td>
                                                     <td style="text-align: center;">
                                                         
-                                                        <%= data.products[i].Quantity * data.products[i].Price %>
+                                                        <%= data.products[i].Quantity * data.products[i].Price+50 %>
                                                     </td>
 
                                                     <td style="text-align: center;">
                                                         <% if(data.status === "Payment Pending") { %>
-                                                            <p style="color: yellow;">
+                                                            <p style="color: rgb(7, 7, 7);">
                                                                 <%= data.status %>
                                                             </p>
                                                         <% } else  { %>

@@ -745,7 +745,7 @@ const walletBalance = async (req, res) => {
 const paymentFailed = async (req, res) => {
     try {
 
-                const addressData = await addressModel.findOne({ userId: req.session.userId });
+        const addressData = await addressModel.findOne({ userId: req.session.userId });
         const userData = await userModel.findOne({ _id: req.session.userId });
         const cartData = await cartModel.find({ userId: req.session.userId });
         const productData = await productModel.find({ proId: req.query.proId });
@@ -754,14 +754,7 @@ const paymentFailed = async (req, res) => {
             cartData[i].userId = 'Pending';
             const productInfo = await productModel.updateOne({ _id: cartData[i].proId }, { $inc: { stock: -cartData[i].Quantity } })
             console.log(productInfo)
-
-
         }
-
-
-     
- 
-
         const totalValue = await cartModel.aggregate([
             {
                 $match: { userId: req.session.userId }
@@ -1125,7 +1118,7 @@ const invoice = async (req, res) => {
 
     } catch (e) {
         console.log('error in the salesReport:', e);
-        res.redirect('/admin/error');
+       
     }
 }
 

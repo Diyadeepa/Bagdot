@@ -53,9 +53,9 @@ const checkAdmin = async (req, res) => {
 const adminHome = async(req, res) => {
     try {
         console.log('adminHome rendered')
-        const data = await userDetails.find({}).count();
-        const product = await productModel.find({}).count();
-        const order = await orderModel.find({}).count();
+        const data = await userDetails.find({}).countDocuments();
+        const product = await productModel.find({}).countDocuments();
+        const order = await orderModel.find({}).countDocuments();
         // const orders = await orderModel.find({});
 
         const revenue = await orderModel.aggregate([
@@ -139,6 +139,7 @@ const adminHome = async(req, res) => {
             { $sort: { totalQuantity: -1 } },
             { $limit: 10 }
         ]);
+        console.log("")
         
         res.render('adminHome',{data:data,product,order,topProducts,topCategories,revenue,})
     } catch (e) {

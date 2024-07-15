@@ -106,7 +106,7 @@
                                         <%= data[i].user %>
                                     </td>
                                     <td>
-                                        <%= data[i].totalOrderValue %>
+                                        <%= data[i].discount %>
                                     </td>
                                     <td>
                                         <%= new Date(data[i].date).toLocaleDateString('en-GB') %>
@@ -121,7 +121,7 @@
                                                 </a>
                                                 <% }else if (data[i].status=="Payment Pending" ){ %>
                                                     <br><a class="btn btn-outline-warning"
-                                                        style="color: rgb(220, 231, 65);height: 30px;width: 130px;"
+                                                        style="color: rgb(6, 6, 6);height: 30px;width: 130px;"
                                                         onclick="retryPayment('<%= data[i].orderID %>')">Retry
                                                         Payment</a>
                                                     <% } %>
