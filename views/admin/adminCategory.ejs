@@ -265,7 +265,7 @@
                   <label class="col-sm-3 form-control-label">Enter the Cateogy</label>
                   <br>
 
-                  <input type="text" name="category" class="form-control" required>
+                  <input type="text" name="category" class="form-control"  required pattern="[A-Za-z]+" title="Only letters are allowed">
 
 
 
@@ -331,7 +331,7 @@
                             <br>
                             <input type="text" name="oldCat" value="<%= data[i].category %>" hidden>
                             <input type="text" name="category" class="form-control"
-                              placeholder="<%= data[i].category %>" required>
+                              placeholder="<%= data[i].category %>"  required pattern="[A-Za-z]+" title="Only letters are allowed">
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

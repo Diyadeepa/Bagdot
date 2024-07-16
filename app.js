@@ -39,5 +39,7 @@ app.set('views', [
 
 app.use('/admin', adminRouter);
 app.use('/', userRouter);
-
+app.get("*",async(req,res)=>{
+  res.render('errorPageUser')
+})
 app.listen(3001, () => console.log('server 3001 '))

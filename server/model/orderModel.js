@@ -75,7 +75,7 @@ const OrderManagement = new mongoose.Schema({
         trim: true,
     },
     coupon:{
-        type: Array,
+        type: String,
     },
 
     cancel: {

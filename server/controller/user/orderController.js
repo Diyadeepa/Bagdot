@@ -213,6 +213,7 @@ const placeOrder = async (req, res) => {
             paymentMethod: req.body.payment,
             date: new Date(),
             status: "Pending",
+            coupon:req.session.discount
         })
 
         await orderData.save();
@@ -1087,8 +1088,9 @@ const invoice = async (req, res) => {
         }
 
         const browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            executablePath: "/usr/bin/chromium-browser",
+            // headless: true,
+            // args: ['--no-sandbox', '--disable-setuid-sandbox']
         });
 
         const page = await browser.newPage();
