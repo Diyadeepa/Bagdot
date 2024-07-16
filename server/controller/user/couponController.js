@@ -11,7 +11,7 @@ const applyCoupon = async (req, res) => {
         if (data.expiry > new Date()) {
             if (amount >= data.minimum_cart_value) {
                 let price = req.session.amount - data.discount
-                req.session.a = req.session.amount
+                req.session.discountAmount = data.discount
                 req.session.amount = price 
                 req.session.coupon = data.name
                 res.json({ response: true, msg: 'Coupon Applied', amount: price, discount: data.discount });

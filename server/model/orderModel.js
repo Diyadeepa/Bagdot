@@ -74,7 +74,7 @@ const OrderManagement = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    coupon:{
+    couponDisAmount:{
         type: String,
     },
 

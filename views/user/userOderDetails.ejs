@@ -185,10 +185,15 @@
                                                 <th
                                                     style="color:rgb(154, 87, 144);font-size:medium; text-align: center; ">
                                                     Price</th>
+                                                    <!-- <th
+                                                    style="color:rgb(154, 87, 144);font-size:medium; text-align: center; ">
+                                                    coupon discount</th>
+                                                 -->
                                                 <th
                                                     style="color:rgb(154, 87, 144);font-size:medium; text-align: center; ">
                                                     Total Price</th>
-                                                <th
+                                                    <th
+                                                 
                                                     style="color:rgb(154, 87, 144);font-size:medium; text-align: center; ">
                                                     Status</th>
                                                 <!-- <th
@@ -212,11 +217,24 @@
                                                     <td style="text-align: center;">
                                                         <%= data.products[i].Price %>
                                                     </td>
+                                                    <!-- <%# if (data.couponDisAmount) { %>
+                                                        <td style="text-align: center;">
+                                                            <%= data.couponDisAmount %>
+                                                        </td>
+                                                        <%# } else { %>
+                                                         <td style="text-align: center;">
+                                                            No discount
+                                                         </td>
+                                                     
+                                                    <%# } %> -->
                                                     <td style="text-align: center;">
                                                         
                                                         <%= data.products[i].Quantity * data.products[i].Price %>
                                                     </td>
 
+                                               
+
+                                                  
                                                     <td style="text-align: center;">
                                                         <% if(data.status === "Payment Pending") { %>
                                                             <p style="color: rgb(7, 7, 7);">

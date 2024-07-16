@@ -213,7 +213,7 @@ const placeOrder = async (req, res) => {
             paymentMethod: req.body.payment,
             date: new Date(),
             status: "Pending",
-            coupon:req.session.discount
+            couponDisAmount:req.session.discountAmount
         })
 
         await orderData.save();
@@ -277,8 +277,15 @@ const cancelOder = async (req, res) => {
             // Step 1: Mark the order as refunded
             await orderModel.updateOne({ orderID: req.query.orderId }, { paymentStatus: 'refunded' });
             const product = orderData.products.find(product => product.proId === req.query.id);
-
-            const refundAmount = product.Price;
+            let couponDisAmount = Number(orderData.couponDisAmount) / orderData.products.length
+            console.log(couponDisAmount,'discount amount is shwonig');
+            console.log(orderData.products.length,'length of products is shwoing');
+            let refundAmount
+            if(couponDisAmount){
+                refundAmount = Number(product.Price) - Number(couponDisAmount)
+            }else{
+                refundAmount = Number(product.Price)
+            }
             const userId = orderData.user;  // Assuming orderData has a userId field
 
 
@@ -508,7 +515,15 @@ const returnOder = async (req, res) => {
         // Step 2: Add the refund amount to the user's wallet
         const product = orderData.products.find(product => product.proId === req.query.id);
 
-        const refundAmount = product.Price*product.Quantity;
+        let couponDisAmount = Number(orderData.couponDisAmount) / orderData.products.length
+        console.log(couponDisAmount,'discount amount is shwonig');
+        console.log(orderData.products.length,'length of products is shwoing');
+        let refundAmount
+        if(couponDisAmount){
+            refundAmount = Number(product.Price) - Number(couponDisAmount)
+        }else{
+            refundAmount = Number(product.Price)
+        }
         const userId = orderData.user;  // Assuming orderData has a totalAmount field
 
         console.log(userId)
