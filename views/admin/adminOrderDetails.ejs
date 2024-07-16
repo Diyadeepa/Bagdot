@@ -388,7 +388,9 @@
                                                             
                                                         <% }else if (data.products[i].userId == 'Delivered'){ %>
                                                             <p style="color:green;">Delivered</p>
-                                                        <% } %>
+                                                            <% } else if (data.products[i].userId == 'Returned') { %>
+                                                                <p style="color: red;">Returned</p>
+                                                            <% } %>
                                                 </td>
                                             </tr>
 

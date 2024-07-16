@@ -189,11 +189,11 @@
                                                 class="input-text qty" readonly>
                                             <button
                                                 onclick="quantityChange('<%= data[i].product %>','<%= data[i]._id %>' ,1,'<%= data[i].Price %>')"
-                                                class="increase items-count" type="button"><i
+                                                class="increase items-count" type="button" min="1"><i
                                                     class="lnr lnr-chevron-up"></i></button>
                                             <button
                                                 onclick="quantityChange('<%= data[i].product %>','<%= data[i]._id %>' ,-1,'<%= data[i].Price %>')"
-                                                class="reduced items-count" type="button"><i
+                                                class="reduced items-count" type="button" min="1"><i
                                                     class="lnr lnr-chevron-down"></i></button>
                                         </div>
                                     </td>
