@@ -24,7 +24,7 @@ const productDetail = async (req, res) => {
         if (req.session.user) {
             login = true;
         }
-        res.render('product details', { data: productData, login: login })
+        res.render('productDetails', { data: productData, login: login })
     } catch (e) {
         console.log('error in the producrDetail ', e)
     }
