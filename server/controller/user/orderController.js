@@ -1107,7 +1107,7 @@ const invoice = async (req, res) => {
           res.setHeader("Content-Type", "application/pdf");
           res.setHeader(
             "Content-Disposition",
-            "attachment; filename=getantiques-invoice.pdf"
+            "attachment; filename=Bagdot-invoice.pdf"
           );
           res.status(200).end(pdfBuffer);
           // copy
