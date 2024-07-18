@@ -25,7 +25,7 @@ const isLogin = async (req, res, next) => {
 
 const errorPage = (req, res) => {
     try {
-        res.render('errorPage')
+        res.render('errorPageUser')
     } catch (e) {
         console.log('error in the errorPage : ', e)
     }

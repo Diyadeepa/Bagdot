@@ -1,6 +1,7 @@
 var express = require('express');
 const userController = require('../../controller/user/userController')
 const productController = require('../../controller/user/productManagement');
+const errorPage = require('../../middleware/userAuth')
 const userAuth = require('../../middleware/userAuth')
 const { route } = require('../admin.js/admin');
 const { rawListeners } = require('../../model/useModel');
@@ -151,5 +152,7 @@ router.post('/forgotPasswordNew', userController.forgorPasswordNewPost)
 router.get('/logout', userController.logout);
 
 router.post('/fetchAddress', orderMangament.fetchAddress)
+
+router.get('/error', errorPage.errorPage)
 
 module.exports = router

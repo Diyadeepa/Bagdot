@@ -18,6 +18,10 @@ const productDetail = async (req, res) => {
     try {
         console.log(req.params.id)
         const productData = await productModel.findOne({ _id: req.params.id })
+        if (!productData) {
+            console.log('Product not found');
+            return res.redirect('/error'); // Redirect if productData is null
+        }
         console.log(productData)
         console.log('++++++++++++++++++++++++')
         let login = false
@@ -25,8 +29,11 @@ const productDetail = async (req, res) => {
             login = true;
         }
         res.render('productDetails', { data: productData, login: login })
+        
     } catch (e) {
+        
         console.log('error in the producrDetail ', e)
+        res.redirect('/error'); 
     }
 }
 
