@@ -15,7 +15,34 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+    <title>Bagdot Shop</title>
+
+	<style>
+		.google-signin-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #444;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.google-signin-btn:hover {
+    background-color: #fbf3e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.google-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 0.5rem;
+}
+
+	</style>
 
 	<!--
 		CSS
@@ -156,7 +183,10 @@
 								<button type="submit" value="submit" class="primary-btn">Log In</button>
 
 								<div>
-									<a href="/googleSignIn"><img src="user/img/google.jpg" style="height: 20px;" width="20px">Signup</a>
+									<a class="google-signin-btn" href="/googleSignIn">
+										<img src="user/img/google.jpg" alt="Google" class="google-icon"> Sign up with Google
+									</a>
+									
 								</div>
 
 								<a href="/forgotPassword">Forgot Password?</a>
