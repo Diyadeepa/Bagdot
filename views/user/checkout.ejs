@@ -31,124 +31,77 @@
 
 
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-        }
-    
-        .container {
-            margin-bottom: 5%;
-        }
-    
-        .billing_details {
-            margin-top: 20px;
-        }
-    
-        .card {
-            border-radius: 10px;
-            box-shadow: 0 14px 16px rgba(232, 225, 225, 0.1);
-            overflow: hidden;
-        }
-    
-        .card-body {
-            padding: 20px;
-            background-color: #f9fbfd;
-            border-radius: 10px;
-            border: 3px solid #e8e8e8;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    
-        .card-body p {
-            margin: 5px 0;
-        }
-    
-        .form-check {
-            display: flex;
-            align-items: center;
-        }
-    
-        .form-check-input {
-            margin-right: 10px;
-        }
-    
-        .text-dark p {
-            font-size: 0.9rem;
-        }
-    
-        .text-dark strong {
-            font-weight: 600;
-        }
-    
-        .order_box {
-            border: 1px solid #e8e8e8;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-        }
-    
-        .order_box h2 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-    
-        .list {
-            list-style: none;
-            padding: 0;
-        }
-    
-        .list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #e8e8e8;
-        }
-    
-        .list li a {
-            color: #333;
-            text-decoration: none;
-        }
-    
-        .list li a:hover {
-            text-decoration: underline;
-        }
-    
-        .list_2 {
-            margin-top: 20px;
-        }
-    
-        .payment_item {
-            margin: 20px 0;
-        }
-    
-        .primary-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-    
-        .primary-btn:hover {
-            background-color: #0056b3;
-        }
-    
         .tp_btn:hover {
             background-color: orange;
         }
-    
+    </style>
+
+    <style>
+        .container {
+            margin-bottom: 5%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        .cart-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 14px 16px rgba(232, 225, 225, 0.1);
+            /* width: 400px; */
+            /* background-color: #c7c7c7;; */
+        }
+
+       
+
+        .card-body {
+            background-color: #ffffff;
+            /* Set the background color */
+            border-radius: 10px;
+            border: 2px solid;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add the box shadow */
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            color: address, daily body, black wall, shadow, danger, Nakoda#007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-label span {
+            color: red;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            color: black;
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+        }
+
         .text-danger {
             font-size: 14px;
             font-style: italic;
             color: red;
             margin-bottom: 10px;
         }
-    
+
         .btn-primary {
             background-color: orange;
             border: none;
@@ -157,128 +110,76 @@
             cursor: pointer;
             width: 100%;
         }
-    
+
         .btn-primary:hover {
             background-color: #0f8415;
         }
-    
+
+        #remove {
+            visibility: hidden;
+            /* visibility: visible; */
+        }
+
+        #discount {
+            visibility: hidden;
+
+        }
+    </style>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
         .cupon_area {
             padding: 20px;
         }
-    
+
         .check_title {
             margin-bottom: 20px;
         }
-    
+
         .check_title a {
             text-decoration: none;
             color: #333;
         }
-    
+
         .check_title a:hover {
             color: #007BFF;
         }
-    
+
         .coupon-table {
             display: none;
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-    
+
         .coupon-table th,
         .coupon-table td {
             padding: 12px;
             text-align: center;
             border: 1px solid #ddd;
         }
-    
+
         .coupon-table th {
             background-color: #f8f8f8;
             color: #333;
         }
-    
+
         .coupon-table tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-    
+
         .coupon-table tr:hover {
             background-color: #eaeaea;
         }
-    
+
         .coupon-table td {
             color: #555;
         }
-    
-        #remove,
-        #discount {
-            visibility: hidden;
-        }
-    
-        @media (max-width: 768px) {
-            .col-md-4,
-            .col-lg-4 {
-                width: 100%;
-                margin-left: 0;
-            }
-    
-            .order_box {
-                margin-left: 0;
-            }
-        }
-    
-        /* Specific adjustments */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
-    
-        .col-lg-8 {
-            flex: 0 0 65%;
-            max-width: 65%;
-        }
-    
-        .col-lg-4 {
-            flex: 0 0 35%;
-            max-width: 35%;
-        }
-    
-        @media (max-width: 1200px) {
-            .col-lg-8 {
-                flex: 0 0 60%;
-                max-width: 60%;
-            }
-    
-            .col-lg-4 {
-                flex: 0 0 40%;
-                max-width: 40%;
-            }
-        }
-    
-        @media (max-width: 992px) {
-            .col-lg-8 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-    
-            .col-lg-4 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
-    
-        @media (max-width: 768px) {
-            .col-md-4,
-            .col-lg-4 {
-                width: 100%;
-                margin-left: 0;
-            }
-    
-            .order_box {
-                margin-left: 0;
-            }
-        }
     </style>
+
     
     
 </head>
@@ -340,7 +241,7 @@
     <!-- End Banner Area -->
 
     <!--================Checkout Area =================-->
-    <section class="checkout_area section_gap">
+   <section class="checkout_area section_gap">
         <div class="container">
             <div class="returning_customer">
                 <!-- <div class="check_title">
@@ -519,71 +420,108 @@
                     <% if (!data) { %>
 
                         <% } else { %>
-                            <% for(let i = 0; i < data.address.length; i++) { %>
-                                <div class="col-md-4 mb-4">
-                                    <div class="card border-0 shadow-sm" style="background-color: #e8f0f2;">
-                                        <div class="card-body">
-                                            <div class="form-check mb-2">
-                                                <input type="radio" class="form-check-input" name="addressId" id="addressId<%= i %>" onclick="addressSelect('<%= i %>')" style="margin-left: 0; margin-top: 0;">
-                                            </div>
-            
-                                            <div class="text-center text-dark">
-                                                <p><strong>Name:</strong> <%= data.address[i].Name %></p>
-                                                <p><strong>Number:</strong> <%= data.address[i].Number %></p>
-                                                <p><strong>Address:</strong> <%= data.address[i].Housename %>, <%= data.address[i].Streetname %>, <%= data.address[i].City %>, <%= data.address[i].State %></p>
-                                                <p><strong>Country:</strong> <%= data.address[i].Country %></p>
-                                                <p><strong>PinCode:</strong> <%= data.address[i].Pincode %></p>
-                                            </div>
+                            <% for( let i=0; i < data.address.length; i++ ) { %>
+
+
+
+                                <div class="col-4" style="margin-right: 10%;">
+
+                                    <div class="card"
+                                        style="width: 18rem; margin-bottom: 10%; margin-top: 10%;background-color: #e8f0f2;">
+                                        <input type="radio" style="margin-left: -35%;margin-top: 5%;" name="addressId"
+                                            id="addressId" onclick="addressSelect('<%= i%>')">
+                                        <div style="text-align: center;padding: 5%;color: black;">
+                                            <p>Name : <%= data.address[i].Name %>
+                                            </p>
+                                            <p>Number : <%= data.address[i].Number %>
+                                            </p>
+                                            <p>Address : <%= data.address[i].Housename %>
+                                                    <%= data.address[i].Streetname %>
+                                                        <%= data.address[i].City %>
+                                                            <%= data.address[i].State %>
+                                            </p>
+                                            <p>Country : <%= data.address[i].Country %>
+                                            </p>
+                                            <p>PinCode : <%= data.address[i].Pincode %>
+                                            </p>
+
                                         </div>
+                                        <!--  -->
                                     </div>
                                 </div>
-                            <% } %>
-                        <% } %>
-                    </div>
-            
 
-                    <div class="col-lg-4">
-                        <div class="order_box">
-                            <h2>Your Order</h2>
-                            <ul class="list">
-                                <li><a href="#">Product <span>Total</span></a></li>
-                                <% for(let i = 0; i < cartData.length; i++) { %>
-                                    <li><a href="#"><%= cartData[i].product %> <span class="middle">x <%= cartData[i].Quantity %></span> <span class="last">Rs.<%= cartData[i].Price %></span></a></li>
                                 <% } %>
-                            </ul>
-                            <ul class="list list_2">
-                                <li><a href="#">Subtotal Rs.<span id="subtotal"><%= totalAmount %></span></a></li>
-                                <li><a href="#">Shipping <span>Rs.50.00</span></a></li>
-                                <li><a href="#">Discount <span id="discount"></span></a></li>
-                                <li><a href="#">Total <span id="totalAmount">Rs.<%= totalAmount + 50 %></span></a></li>
-                            </ul>
-                            <div class="payment_item">
-                                <div class="radion_btn">
-                                    <input type="radio" id="f-option5" name="selector" onclick="codPaymet('Cod')">
-                                    <label for="f-option5">Cash on Delivery</label>
-                                    <div class="check"></div>
-                                </div>
+
+
+                                    <% } %>
+
+
+
+
+                </div>
+
+                <div class="col-lg-4" style="margin-left: 30%;">
+                    <div class="order_box">
+                        <h2>Your Order</h2>
+                        <ul class="list">
+                            <li><a href="#">Product <span>Total</span></a></li>
+
+
+                            <% for( let i=0; i <cartData.length; i++ ) { %>
+
+                                <li><a href="#">
+                                        <%= cartData[i].product %> <span class="middle">x <%= cartData[i].Quantity %>
+                                            </span> <span class="last">Rs.<%= cartData[i].Price %></span>
+                                    </a></li>
+                                <% } %>
+                        </ul>
+                        <ul class="list list_2">
+                            <li><a href="#">Subtotal Rs.<span id="subtotal">
+                                        <%= totalAmount %>
+                                    </span></a></li>
+                            <li><a href="#">Shipping <span>Rs.50.00</span></a></li>
+                            <li><a href="#">Discount <span id="discount"></span></a></li>
+                            <li><a href="#">Total <span id="totalAmount">Rs.<%= totalAmount+50 %></span></a>
+                            </li>
+                        </ul>
+                        <div class="payment_item">
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option5" name="selector" onclick="codPaymet('Cod')">
+                                <label for="f-option5">Cash on Delivery</label>
+                                <div class="check"></div>
                             </div>
-                            <div class="payment_item">
-                                <div class="radion_btn">
-                                    <input type="radio" id="f-option7" name="selector" onclick="walletPayment()">
-                                    <label for="f-option7">Wallet</label><span style="margin-left: 85%;"> Rs.<%= walletData %></span>
-                                    <div class="check"></div>
-                                </div>
-                            </div>
-                            <div class="payment_item active">
-                                <div class="radion_btn">
-                                    <input type="radio" id="f-option6" name="selector" onclick="onlinePayment()">
-                                    <label for="f-option6">Online Payment</label>
-                                    <div class="check"></div>
-                                </div>
-                            </div>
-                            <button class="primary-btn" style="width: 100%; border: transparent;" onclick="placeOrder()">Proceed</button>
                         </div>
+                        <div class="payment_item">
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option7" name="selector" onclick="walletPayment()">
+                                <label for="f-option7">Wallet</label><span style="margin-left: 85%;">  Rs.<%= walletData %></span>
+                                <div class="check"></div>
+                            </div>
+                        </div>
+                        <div class="payment_item active">
+                            <div class="radion_btn">
+                                <input type="radio" id="f-option6" name="selector" onclick="onlinePayment()">
+
+                                <label for="f-option6">OnlinePayment </label>
+                                <!-- <img src="user/img/product/card.jpg" alt=""> -->
+                                <div class="check"></div>
+                            </div>
+                            <!-- <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
+                                    account.</p> -->
+                        </div>
+                        <!-- <div class="creat_account">
+                                <input type="checkbox" id="f-option4" name="selector">
+                                <label for="f-option4">I’ve read and accept the </label>
+                                <a href="#">terms & conditions*</a>
+                            </div> -->
+                        <button class="primary-btn" style="width: 100%;border: transparent;"
+                            onclick="placeOrder()">Proceed </button>
                     </div>
                 </div>
             </div>
-            </section>
+        </div>
+        </div>
+    </section>
     <!--================End Checkout Area =================-->
 
     <!-- start footer Area -->

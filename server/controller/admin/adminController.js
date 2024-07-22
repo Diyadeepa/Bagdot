@@ -196,7 +196,6 @@ const salesReport = async (req, res) => {
         //     },
         // ]);
         
-
         // console.log("Product details:", Product);
         console.log('2 ------------------------------------------------------------------------');
 

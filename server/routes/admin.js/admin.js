@@ -20,7 +20,6 @@ router.get('/adminHome', adminLogin.isLogin, adminController.adminHome)
 //sales report
 router.post('/salesReport', adminLogin.isLogin, adminController.salesReport)
 
-
 //chart data of admin dashboard
 router.get("/sales_data", adminLogin.isLogin, adminController.getSalesData);
 
