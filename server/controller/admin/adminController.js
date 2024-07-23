@@ -364,76 +364,23 @@ const salesReport = async (req, res) => {
                 </html>
             `;
 
-            if (format === "pdf") {
-                // Generate PDF
-                const browser = await puppeteer.launch({
-                  executablePath: '/usr/bin/chromium-browser'
-                })
-                const page = await browser.newPage();
-                await page.setContent(htmlContent);
-                const pdfBuffer = await page.pdf();
-                await browser.close();
+            const browser = await puppeteer.launch({
+                executablePath: "/usr/bin/chromium-browser",
+              });
+              const page = await browser.newPage();
+              await page.setContent(htmlContent);
           
-                // Set headers for PDF
-                res.setHeader("Content-Length", pdfBuffer.length);
-                res.setHeader("Content-Type", "application/pdf");
-                res.setHeader("Content-Disposition", "attachment; filename=sales.pdf");
-                res.status(200).end(pdfBuffer);
-              } else if (format === "excel") {
-                // Create a new Excel workbook
-                const workbook = new ExcelJS.Workbook();
-                const worksheet = workbook.addWorksheet("Sales Report");
+              const pdfBuffer = await page.pdf();
           
-                // Add headers for total sales
-          const salesHeaderRow = worksheet.addRow(["Product Name", "Product Price", "Product Offer Price", "Total Orders"]);
-          salesHeaderRow.eachCell({ includeEmpty: true }, (cell) => {
-              cell.fill = {
-                  type: 'pattern',
-                  pattern: 'solid',
-                  fgColor: { argb: 'FFFF00' } // Yellow fill color
-              };
-          });
+              await browser.close();
           
-          // Add data for total sales
-          Product.forEach((item) => {
-              worksheet.addRow([item._id, item.price, item.Offerprice, item.totalOrders]);
-          });
-          
-          // Add empty row
-          worksheet.addRow();
-          
-          // Add headers for order status
-          const statusHeaderRow = worksheet.addRow(["Status", "Total Count"]);
-          statusHeaderRow.eachCell({ includeEmpty: true }, (cell) => {
-              cell.fill = {
-                  type: 'pattern',
-                  pattern: 'solid',
-                  fgColor: { argb: 'FFA07A' } 
-              };
-          });
-          
-          status.forEach((item) => {
-              worksheet.addRow([item._id, item.count]);
-          });
-          
-          // Add empty row
-          worksheet.addRow();
-          worksheet.addRow(["Total Orders:", count]);
-          worksheet.addRow(["Total Amount:", totalDiscount.length > 0 ? totalDiscount[0].price : 0]);
-          worksheet.addRow(["Total Discount Amount:", totalDiscount.length > 0 ? totalDiscount[0].price - totalDiscount[0].totalDiscount : 0]);
-          
-          
-                // Set the content type and headers for the response for Excel
-                res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                res.setHeader("Content-Disposition", "attachment; filename=sales.xlsx");
-          
-                // Write the Excel workbook to the response
-                const excelBuffer = await workbook.xlsx.writeBuffer();
-                res.status(200).end(excelBuffer);
-              } else {
-                res.status(400).send("Invalid report format selected.");
-              }
-          
+              res.setHeader("Content-Length", pdfBuffer.length);
+              res.setHeader("Content-Type", "application/pdf");
+              res.setHeader(
+                "Content-Disposition",
+                "attachment; filename=Bagdot-Sales.pdf"
+              );
+              res.status(200).end(pdfBuffer);
             } catch (error) {
               console.log(
                 "Error happened between salesReport in adminController ",
