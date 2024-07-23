@@ -23,11 +23,6 @@ router.post('/salesReport', adminLogin.isLogin, adminController.salesReport)
 //chart data of admin dashboard
 router.get("/sales_data", adminLogin.isLogin, adminController.getSalesData);
 
-
-
-
-
-
 router.get('/Coupones-add', (req, res) => {
     res.render('adminCoupones-add')
 })
