@@ -408,19 +408,16 @@ const salesReport = async (req, res) => {
               cell.fill = {
                   type: 'pattern',
                   pattern: 'solid',
-                  fgColor: { argb: 'FFA07A' } // Light salmon fill color
+                  fgColor: { argb: 'FFA07A' } 
               };
           });
           
-          // Add data for order status
           status.forEach((item) => {
               worksheet.addRow([item._id, item.count]);
           });
           
           // Add empty row
           worksheet.addRow();
-          
-          // Add total orders, total amount, and total discount amount
           worksheet.addRow(["Total Orders:", count]);
           worksheet.addRow(["Total Amount:", totalDiscount.length > 0 ? totalDiscount[0].price : 0]);
           worksheet.addRow(["Total Discount Amount:", totalDiscount.length > 0 ? totalDiscount[0].price - totalDiscount[0].totalDiscount : 0]);
