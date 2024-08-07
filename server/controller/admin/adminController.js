@@ -160,7 +160,7 @@ const adminLogout = async (req, res) => {
 }
 const salesReport = async (req, res) => {
     try {
-        console.log("***salesReport***");
+        console.log("salesReport");
         const { startDate, endDate } = req.body;
         console.log("Start Date is:", startDate);
         console.log("End Date is:", endDate);
@@ -196,6 +196,7 @@ const salesReport = async (req, res) => {
         //     },
         // ]);
         
+
         // console.log("Product details:", Product);
         console.log('2 ------------------------------------------------------------------------');
 
@@ -367,6 +368,7 @@ const salesReport = async (req, res) => {
             const browser = await puppeteer.launch({
                 executablePath: "/usr/bin/chromium-browser",
               });
+          
               const page = await browser.newPage();
               await page.setContent(htmlContent);
           
@@ -374,21 +376,24 @@ const salesReport = async (req, res) => {
           
               await browser.close();
           
+              // const downloadsPath = path.join(os.homedir(), "Downloads");
+              // const pdfFilePath = path.join(downloadsPath, "invoice.pdf");
+          
+              // fs.writeFileSync(pdfFilePath, pdfBuffer);
+          
               res.setHeader("Content-Length", pdfBuffer.length);
               res.setHeader("Content-Type", "application/pdf");
               res.setHeader(
                 "Content-Disposition",
-                "attachment; filename=Bagdot-Sales.pdf"
+                "attachment; filename=Bagdot-invoice.pdf"
               );
               res.status(200).end(pdfBuffer);
-            } catch (error) {
-              console.log(
-                "Error happened between salesReport in adminController ",
-                error
-              );
-            }
-          };
-          
+
+    } catch (e) {
+        console.log('error in the salesReport:', e);
+        res.redirect('/admin/error');
+    }
+}
 
 
 const getSalesData = async (req, res) => {
